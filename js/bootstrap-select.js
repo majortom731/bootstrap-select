@@ -283,6 +283,8 @@
     deselectAllText: 'Deselect All',
     doneButton: false,
     doneButtonText: 'Close',
+    submitButton: false,
+    submitButtonText: 'Submit',
     multipleSeparator: ', ',
     styleBase: 'btn',
     style: 'btn-default',
@@ -408,6 +410,15 @@
       '</div>' +
       '</div>'
           : '';
+      var submitbutton = this.multiple && this.options.submitButton ?
+      '<div class="bs-donebutton">' +
+      '<div class="btn-group btn-block">' +
+      '<button type="submit" class="btn btn-sm btn-primary">' +
+      this.options.submitButtonText +
+      '</button>' +
+      '</div>' +
+      '</div>'
+          : '';
       var drop =
           '<div class="btn-group bootstrap-select' + multiple + inputGroup + '">' +
           '<button type="button" class="' + this.options.styleBase + ' dropdown-toggle" data-toggle="dropdown"' + autofocus + '>' +
@@ -421,6 +432,7 @@
           '<ul class="dropdown-menu inner" role="menu">' +
           '</ul>' +
           donebutton +
+          submitbutton +
           '</div>' +
           '</div>';
 
