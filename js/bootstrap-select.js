@@ -411,7 +411,7 @@
       '</div>'
           : '';
       var submitbutton = this.multiple && this.options.submitButton ?
-      '<div class="bs-donebutton">' +
+      '<div class="bs-submitbutton">' +
       '<div class="btn-group btn-block">' +
       '<button type="submit" class="btn btn-sm btn-primary">' +
       this.options.submitButtonText +
@@ -707,7 +707,8 @@
           header = this.options.header ? this.$menu.find('.popover-title')[0].cloneNode(true) : null,
           search = this.options.liveSearch ? document.createElement('div') : null,
           actions = this.options.actionsBox && this.multiple ? this.$menu.find('.bs-actionsbox')[0].cloneNode(true) : null,
-          doneButton = this.options.doneButton && this.multiple ? this.$menu.find('.bs-donebutton')[0].cloneNode(true) : null;
+          doneButton = this.options.doneButton && this.multiple ? this.$menu.find('.bs-donebutton')[0].cloneNode(true) : null,
+          submitButton = this.options.submitButton && this.multiple ? this.$menu.find('.bs-submitbutton')[0].cloneNode(true) : null;
 
       text.className = 'text';
       newElement.className = this.$menu[0].parentNode.className + ' open';
@@ -732,6 +733,7 @@
       if (actions) menu.appendChild(actions);
       menu.appendChild(menuInner);
       if (doneButton) menu.appendChild(doneButton);
+      if (submitButton) menu.appendChild(submitButton);
       newElement.appendChild(menu);
 
       document.body.appendChild(newElement);
@@ -741,6 +743,7 @@
           searchHeight = search ? search.offsetHeight : 0,
           actionsHeight = actions ? actions.offsetHeight : 0,
           doneButtonHeight = doneButton ? doneButton.offsetHeight : 0,
+          submitButtonHeight = submitButton ? submitButton.offsetHeight : 0,
           dividerHeight = $(divider).outerHeight(true),
           // fall back to jQuery if getComputedStyle is not supported
           menuStyle = typeof getComputedStyle === 'function' ? getComputedStyle(menu) : false,
@@ -761,10 +764,15 @@
         searchHeight: searchHeight,
         actionsHeight: actionsHeight,
         doneButtonHeight: doneButtonHeight,
+        submitButtonHeight: submitButtonHeight,
         dividerHeight: dividerHeight,
         menuPadding: menuPadding,
         menuExtras: menuExtras
       };
+        console.warn( this.sizeInfo );
+        console.warn( this.options );
+        console.warn( doneButtonHeight );
+        console.warn( submitButtonHeight );
     },
 
     setSize: function () {
@@ -784,6 +792,7 @@
           searchHeight = this.sizeInfo['searchHeight'],
           actionsHeight = this.sizeInfo['actionsHeight'],
           doneButtonHeight = this.sizeInfo['doneButtonHeight'],
+          submitButtonHeight = this.sizeInfo['submitButtonHeight'],
           divHeight = this.sizeInfo['dividerHeight'],
           menuPadding = this.sizeInfo['menuPadding'],
           menuExtras = this.sizeInfo['menuExtras'],
@@ -841,10 +850,10 @@
           $menu.css({
             'max-height': menuHeight + 'px',
             'overflow': 'hidden',
-            'min-height': minHeight + headerHeight + searchHeight + actionsHeight + doneButtonHeight + 'px'
+            'min-height': minHeight + headerHeight + searchHeight + actionsHeight + doneButtonHeight + submitButtonHeight + 'px'
           });
           $menuInner.css({
-            'max-height': menuHeight - headerHeight - searchHeight - actionsHeight - doneButtonHeight - menuPadding + 'px',
+            'max-height': menuHeight - headerHeight - searchHeight - actionsHeight - doneButtonHeight + submitButtonHeight - menuPadding + 'px',
             'overflow-y': 'auto',
             'min-height': Math.max(minHeight - menuPadding, 0) + 'px'
           });
@@ -869,7 +878,7 @@
           this.$newElement.toggleClass('dropup', selectOffsetTop > selectOffsetBot && (menuHeight - menuExtras) < getHeight);
         }
         $menu.css({
-          'max-height': menuHeight + headerHeight + searchHeight + actionsHeight + doneButtonHeight + 'px',
+          'max-height': menuHeight + headerHeight + searchHeight + actionsHeight + doneButtonHeight + submitButtonHeight + 'px',
           'overflow': 'hidden',
           'min-height': ''
         });

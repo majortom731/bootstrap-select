@@ -219,7 +219,8 @@
 }
 .bs-searchbox,
 .bs-actionsbox,
-.bs-donebutton {
+.bs-donebutton,
+.bs-submitbutton {
   padding: 4px 8px;
 }
 .bs-actionsbox {
@@ -231,14 +232,16 @@
 .bs-actionsbox .btn-group button {
   width: 50%;
 }
-.bs-donebutton {
+.bs-donebutton,
+.bs-submitbutton {
   float: left;
   width: 100%;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-.bs-donebutton .btn-group button {
+.bs-donebutton .btn-group button,
+.bs-submitbutton .btn-group button {
   width: 100%;
 }
 .bs-searchbox + .bs-actionsbox {
