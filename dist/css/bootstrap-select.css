@@ -165,6 +165,8 @@
   position: absolute;
   display: inline-block;
   right: 15px;
+}
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark-extra-margin {
   margin-top: 5px;
 }
 .bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
